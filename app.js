@@ -38,7 +38,25 @@ app.route("/articles")
     .delete((req,res)=>{
         Article.deleteMany().then( res.send("Deleted Everything"))
     })
+
+    app.route("/articles/:articlename")
+    .get(async(req,res)=>{
+        const results=await Article.findOne({title:req.params.articlename})
+        if(results){
+        res.send(results)
+        }else{
+            res.send("Not found")
+        }
+    
+    })
+
+
+
+
+
+
+
 app.listen(3000,()=>{
     console.log("server started");
 })
-//hi
+//h
