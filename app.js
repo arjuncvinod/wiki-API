@@ -46,8 +46,15 @@ app.route("/articles")
         res.send(results)
         }else{
             res.send("Not found")
-        }
+        } 
     
+    })
+    .put((req,res)=>{
+        Article.findOneAndUpdate(
+            {title:req.params.articlename},
+            {title:req.body.title,content:req.body.content}
+            ).then( res.send("updated"))
+       
     })
 
 
