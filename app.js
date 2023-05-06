@@ -56,6 +56,9 @@ app.route("/articles")
             ).then( res.send("updated"))
        
     })
+    .delete((req,res)=>{
+        Article.deleteOne({title:req.params.articlename}).then(res.send("deleted"))
+    })
 
 
 
