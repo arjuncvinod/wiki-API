@@ -59,6 +59,9 @@ app.route("/articles")
     .delete((req,res)=>{
         Article.deleteOne({title:req.params.articlename}).then(res.send("deleted"))
     })
+    .patch((req,res)=>{
+        Article.findOneAndUpdate({title:req.params.title},{$set:req.body}).then(res.send("updated"))
+    })
 
 
 
